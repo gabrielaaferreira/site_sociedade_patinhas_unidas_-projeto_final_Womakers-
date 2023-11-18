@@ -7,6 +7,12 @@ from base.models import Cadastro
 def inicio(request):
     return render(request, 'inicio.html')
 
+def faq(request):
+    return render(request, 'faq.html')
+
+def ficha001(request):
+    return render(request, 'fichas_animais/ficha001_Manu.html')
+
 def cadastro(request):
     sucesso = False
     mensagem = None
@@ -28,5 +34,5 @@ def cadastro(request):
         'sucesso': sucesso,
         'mensagem': mensagem,
     }
-
     return render(request, 'cadastro.html', contexto)
+    

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import inicio, cadastro, faq, ficha, ficha001, ficha002, animal_search
+from base.views import inicio, cadastro, faq, ficha, animal_search, animal_detail
 from django.conf import settings
 from django.conf.urls.static import static 
 
@@ -26,9 +26,8 @@ urlpatterns = [
     path('cadastro/', cadastro),
     path('faq/', faq),
     path('animal/search/', animal_search, name='animal_search'),
-    path('ficha/', ficha),
-    path('ficha/001/', ficha001),
-    path('ficha/002/', ficha002)
+    path('ficha/', ficha, name='ficha'),
+    path('animal/<int:animal_id>/', animal_detail, name='animal_detail'),
 ]
 
 if settings.DEBUG:

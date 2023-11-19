@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block content %}
+
+<h2>{{ animal.nome }}</h2>
+
+<img src="{{ animal.foto.url }}" alt="{{ animal.nome }}" width="200" height="200">
+<p>Espécie: {{ animal.especie }}</p>
+<p>Raça: {{ animal.raca }}</p>
+<p>Idade: {{ animal.idade }} anos</p>
+<p>Histórico de Saúde: {{ animal.historico_saude }}</p>
+<!-- Adicione mais detalhes conforme necessário -->
+
+{% endblock %}

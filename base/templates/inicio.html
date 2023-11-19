@@ -2,78 +2,22 @@
 {% block content %}
 {% load static %}
 
-<!-- Seção de Animais para Adoção -->
-      <section class="mt-5">
-        <div class="container">
-          <h2>Animais para Adoção</h2>
-          <p>Aenean quis sem consectetur, placerat sem in, laoreet est. Morbi ullamcorper diam turpis, ac faucibus mauris finibus quis. Aliquam cursus ante eget risus mattis, nec semper dolor convallis.</p>
+<section class="mt-5">
+  <div class="container">
+      <h2>Animais para Adoção</h2>
+      <p>Aenean quis sem consectetur, placerat sem in, laoreet est. Morbi ullamcorper diam turpis, ac faucibus mauris finibus quis. Aliquam cursus ante eget risus mattis, nec semper dolor convallis.</p>
 
-         <!-- Menu de animais -->
-          <div class="row mt-3">
-            <!-- Primeira linha de quatro animais -->
-            <div class="col-md-4 mb-4">
-              <a href="ficha/001/" class="square-crop">
-                  <img src="../static/img/ficha001_manu.jpg" alt="Manu" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
+      <!-- Menu de animais -->
+      <div class="row mt-3">
+          {% for animal in animais %}
+          <div class="col-md-4 mb-4">
+              <a href="{% url 'animal_detail' animal_id=animal.id %}" class="square-crop">
+                  <img src="{{ animal.foto.url }}" alt="{{ animal.nome }}" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
               </a>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-              <a href="ficha/002/" class="square-crop">
-                <div class="square-crop">
-                  <img src="../static/img/ficha002_chico.jpeg" alt="Manu" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>  
-              </a>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="square-crop">
-                   <img src="../static/img/richard.jpg" alt="Richard" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>
-            </div>
-
-            <!-- Segunda linha de quatro animais -->
-            <div class="col-md-4 mb-4">
-              <div class="square-crop">
-                 <img src="../static/img/toquinho.jpg" alt="Toquinho" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-              </div>
-           </div>
-            
-            <div class="col-md-4 mb-4">
-                <div class="square-crop">
-                   <img src="../static/img/Aurora.png" alt="Aurora" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>
-            </div>
-
-           <div class="col-md-4 mb-4">
-                <div class="square-crop">
-                   <img src="../static/img/Aurora2.png" alt="Aurora" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>
-            </div>
           </div>
-        </div>
-      </section>
-      
-      <div style="text-align: center;">
-        <a href="/ficha/" class="square-crop">
-          <button class="btn btn-primary" type="submit" style="width: 200px; height: 50px;">Veja mais</button>
-        </a>
-      </div>      
-
-      <section class="mt-5">
-        <div class="container">
-          <h2>Quem Somos</h2>
-          <p>Aenean quis sem consectetur, placerat sem in, laoreet est. Morbi ullamcorper diam turpis, ac faucibus mauris finibus quis. Aliquam cursus ante eget risus mattis, nec semper dolor convallis.</p>
-      </section>
-
-      <section class="mt-5">
-        <div class="container">
-          <h2>Parceiros</h2>
-          <p>Aenean quis sem consectetur, placerat sem in, laoreet est. Morbi ullamcorper diam turpis, ac faucibus mauris finibus quis. Aliquam cursus ante eget risus mattis, nec semper dolor convallis.</p>
-      </section>
-
-    </div>
-    </section>
-
-  </main>
+          {% endfor %}
+      </div>
+  </div>
+</section>
 
 {% endblock %}

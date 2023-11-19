@@ -55,7 +55,7 @@ class HistoricoAdocao(models.Model):
     def __str__(self):
         return f"{self.animal.nome} - {self.nome_tutor}"
     class Meta:
-        verbose_name= 'Historido de Adoção'
+        verbose_name= 'Histórico de Adoção'
         verbose_name_plural = 'Históricos de Adoção'
 
 

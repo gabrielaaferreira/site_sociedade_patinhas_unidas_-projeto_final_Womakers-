@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from django.urls import reverse
 from django.utils.html import format_html
 from base.models import Cadastro, Animal, Registro, HistoricoAdocao, Cuidador, Voluntario
 # Register your models here.
@@ -21,6 +22,11 @@ class AnimalAdmin(admin.ModelAdmin):
             return 'No Image'
 
     display_foto.short_description = 'Foto'
+    
+    def ficha_link(self, obj):
+        return format_html('<a href="{}">Ver Ficha</a>', reverse('ficha_animal', args=[obj.pk]))
+
+    ficha_link.short_description = 'Ficha'
 
 admin.site.register(Animal, AnimalAdmin)
 admin.site.register(Cadastro)

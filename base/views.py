@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from base.forms import CadastroForm, AnimalSearchForm
 from base.models import Cadastro, Animal
 from django.shortcuts import get_object_or_404, render
+from django.db.models import Q
 
 # Create your views here.
 def inicio(request):
-    return render(request, 'inicio.html')
+    animais = Animal.objects.all()
+    return render(request, 'inicio.html', {'animais': animais})
 
 def faq(request):
     return render(request, 'faq.html')
@@ -14,13 +16,9 @@ def faq(request):
 def ficha(request):
     return render(request, 'ficha.html')
 
-def ficha001(request):
-    animal_instance = get_object_or_404(Animal, id_ficha=1)
-    return render(request, 'fichas_animais/ficha001_Manu.html', {'animal': animal_instance})
-
-def ficha002(request):
-    animal_instance = get_object_or_404(Animal, id_ficha=2)
-    return render(request, 'fichas_animais/ficha002_Chico.html', {'animal': animal_instance})
+def animal_detail(request, animal_id):
+    animal = get_object_or_404(Animal, id=animal_id)
+    return render(request, 'animal_detail.html', {'animal': animal})
 
 def sua_view(request):
     animal_2 = Animal.objects.get(id_ficha=2)
@@ -56,8 +54,10 @@ def animal_search(request):
     if form.is_valid():
         query = form.cleaned_data['query']
         if query:
-            # Modify this query based on your actual fields and search requirements
-            animals = animals.filter(search_field__icontains=query)
+            animals = animals.filter(
+                Q(nome__icontains=query) | 
+                Q(especie__icontains=query) |
+                Q(raca__icontains=query) )
 
     context = {'animals': animals, 'form': form}
     return render(request, 'animal_search.html', context)

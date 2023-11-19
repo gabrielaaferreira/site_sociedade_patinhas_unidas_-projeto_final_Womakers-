@@ -11,7 +11,7 @@
 </div>
 
 <div class="text-center">
-  <img src="{% static 'img/ficha001_manu.jpg' %}" class="img-fluid" alt="{{ animal.nome }}">
+  <img src="{{ animal.foto.url }}" class="img-fluid" alt="{{ animal.nome }}">
 </div>
 
 <div class="container text-center mt-5">
@@ -36,8 +36,8 @@
           <td>{{ animal.raca }}</td>
         </tr>
         <tr>
-        <th scope="row">Histórico de Saúde</th>
-        <td>{{ animal.historico_saude }}</td>
+          <th scope="row">Histórico de Saúde</th>
+          <td>{{ animal.historico_saude }}</td>
         </tr>
       </tbody>
     </table>
@@ -47,11 +47,9 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
-      <img src="{% static 'img/ficha001_manu.jpg' %}" class="img-fluid" alt="{{ animal.nome }}">
+      <img src="{{ animal.foto.url }}" class="img-fluid" alt="{{ animal.nome }}">
     </div>
-    <div class="col">
-      <img src="{% static 'img/ficha001_manu.jpg' %}" class="img-fluid" alt="{{ animal.nome }}">
-    </div>
+    <!-- Adicione mais colunas conforme necessário -->
   </div>
 </div>
 

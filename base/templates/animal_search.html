@@ -1,0 +1,19 @@
+<!-- animal_search.html -->
+{% extends 'base_site.html' %}
+
+{% block content %}
+    <h2>Animal Search</h2>
+    <form method="get" action="{% url 'animal_search' %}">
+        {{ form }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if animals %}
+        <h3>Search Results:</h3>
+        <ul>
+            {% for animal in animals %}
+                <li>{{ animal.nome }} - {{ animal.idade }} years old</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

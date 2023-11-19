@@ -35,9 +35,9 @@
               <a class="nav-link" href="/cadastro/">Adote um amigo!</a>
               <a class="nav-link" href="/faq/">FAQ</a>
             </div>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Pesquisar..." name="search_query" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+            <form method="get" action="{% url 'animal_search' %}">
+              {{ form }}
+              <button type="submit">Search</button>
             </form>
           </div>
         </div>

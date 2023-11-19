@@ -25,6 +25,7 @@ class Animal(models.Model):
     idade = models.IntegerField(null=True, blank=True)
     raca = models.CharField(max_length=100)
     historico_saude = models.CharField(max_length=100)
+    foto = models.ImageField(upload_to='static', blank=True, null=True)
 
     def __str__(self):
         return self.nome

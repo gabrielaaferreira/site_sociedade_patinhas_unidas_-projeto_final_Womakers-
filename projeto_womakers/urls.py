@@ -16,13 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import inicio, cadastro, faq, ficha, ficha001
+from base.views import inicio, cadastro, faq, ficha, ficha001, ficha002, animal_search
+from django.conf import settings
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio),
     path('cadastro/', cadastro),
     path('faq/', faq),
+    path('animal/search/', animal_search, name='animal_search'),
     path('ficha/', ficha),
-    path('ficha/001/', ficha001)
+    path('ficha/001/', ficha001),
+    path('ficha/002/', ficha002)
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

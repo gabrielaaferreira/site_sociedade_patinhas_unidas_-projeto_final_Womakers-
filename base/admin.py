@@ -1,10 +1,10 @@
 from django.contrib import admin
-from base.models import Cadastro
+from base.models import Cadastro, Animal, Registro, HistoricoAdocao, Cuidador, Voluntario
 # Register your models here.
 
-@admin.register(Cadastro)
-class CadastroAdmin(admin.ModelAdmin):
-    list_display = ['nome', 'email', 'data']
-    search_fields = ['nome', 'email']
-    list_filter = ['data']
-    
+admin.site.register(Cadastro)
+admin.site.register(Animal)
+admin.site.register(Registro)
+admin.site.register(HistoricoAdocao)
+admin.site.register(Cuidador)
+admin.site.register(Voluntario)

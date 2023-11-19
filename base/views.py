@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 from base.forms import CadastroForm
-from base.models import Cadastro
+from base.models import Cadastro, Animal
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def inicio(request):
@@ -10,8 +11,12 @@ def inicio(request):
 def faq(request):
     return render(request, 'faq.html')
 
+def ficha(request):
+    return render(request, 'ficha.html')
+
 def ficha001(request):
-    return render(request, 'fichas_animais/ficha001_Manu.html')
+    animal_instance = get_object_or_404(Animal, id_ficha=1)
+    return render(request, 'fichas_animais/ficha001_Manu.html', {'animal': animal_instance})
 
 def cadastro(request):
     sucesso = False

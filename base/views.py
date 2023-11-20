@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse 
 from base.forms import CadastroForm, AnimalSearchForm
 from base.models import Cadastro, Animal
@@ -10,8 +10,11 @@ def inicio(request):
     animais = Animal.objects.all()
     return render(request, 'inicio.html', {'animais': animais})
 
-def faq(request):
-    return render(request, 'faq.html')
+def quem_somos(request):
+    return render(request, 'quem_somos.html')
+
+def futuras_atualizacoes(request):
+    return render(request, 'futuras_atualizacoes.html')
 
 def ficha(request):
     return render(request, 'ficha.html')
@@ -25,27 +28,18 @@ def sua_view(request):
     return render(request, 'inicio.html', {'animal_2': animal_2})
 
 def cadastro(request):
-    sucesso = False
-    mensagem = None
-
     if request.method == 'POST':
         form = CadastroForm(request.POST)
         if form.is_valid():
             form.save()
-            sucesso = True
-            mensagem = "Cadastro realizado com sucesso."
-            # Pode adicionar redirecionamento ou outras lógicas aqui
-        else:
-            mensagem = "Erro no formulário. Por favor, corrija os erros e tente novamente."
-    else:
-        form = CadastroForm()
+            # Redirecionar para a página de sucesso após o cadastro
+            return HttpResponse('Cadastro realizado com sucesso.')
 
-    contexto = {
-        'form': form,
-        'sucesso': sucesso,
-        'mensagem': mensagem,
-    }
+    # Se o método não for POST ou o formulário não for válido, renderizar o formulário
+    form = CadastroForm()
+    contexto = {'form': form}
     return render(request, 'cadastro.html', contexto)
+
     
 def animal_search(request):
     form = AnimalSearchForm(request.GET)

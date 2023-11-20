@@ -2,22 +2,32 @@
 {% block content %}
 {% load static %}
 
+<style>
+  .por-que-adotar {
+    background-color: rgba(255, 255, 255, 0.9); /* Cor de fundo com transparência */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+  }
+</style>
+
 <section class="mt-5">
   <div class="container">
+    <div class="por-que-adotar">
       <h2>Por que adotar?</h2>
       <p>
         Adotar um animal de estimação é mais do que simplesmente trazer um novo companheiro para casa; é abrir as portas para uma fonte inesgotável de alegria, amor e gratificação. A experiência de ter um animal de estimação vai muito além da responsabilidade diária, transformando-se em uma jornada enriquecedora que beneficia tanto os donos quanto os animais.</p>
+    </div>
 
-      <!-- Menu de animais -->
-      <div class="row mt-3">
-          {% for animal in animais %}
-          <div class="col-md-4 mb-4">
-              <a href="{% url 'animal_detail' animal_id=animal.id %}" class="square-crop">
-                  <img src="{{ animal.foto.url }}" alt="{{ animal.nome }}" class="img-fluid img-rounded" style="object-fit: cover; width: 100%; height: 100%;">
-              </a>
-          </div>
-          {% endfor %}
+    <!-- Menu de animais -->
+    <div class="row mt-3">
+      {% for animal in animais %}
+      <div class="col-md-4 mb-4">
+        <a href="{% url 'animal_detail' animal_id=animal.id %}" class="square-crop">
+          <img src="{{ animal.foto.url }}" alt="{{ animal.nome }}" class="img-fluid">
+        </a>
       </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 

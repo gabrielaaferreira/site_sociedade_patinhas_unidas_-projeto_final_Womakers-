@@ -2,9 +2,17 @@
 {% block content %}
 {% load static %}
 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-<div class="container mt-5">
-  <h2>Cadastre-se para Adotar um Amigo!</h2>
+<div class="container mt-5 cadastro-container">
+  <h2 class="cadastro-title">Cadastre-se para Adotar um Amigo!</h2>
+
+  {% if cadastro_success %}
+    <div class="alert alert-success" role="alert">
+      Formulário enviado com sucesso!
+    </div>
+  {% endif %}
+
   <form method="POST" action="{% url 'cadastro' %}" id="form">
     {% csrf_token %}
     <div class="mb-3">

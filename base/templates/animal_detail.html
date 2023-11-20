@@ -1,42 +1,68 @@
 {% extends "base_site.html" %}
 {% block content %}
 
-<div class="container text-center">
-    <div class="row">
+<style>
+    .square-crop {
+        overflow: hidden;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        margin-top: 50px;
+    }
+
+    .square-crop img {
+        max-width: 100%; /* Ajuste para largura responsiva */
+        max-height: 500px; /* Altura máxima de 500 pixels */
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Adiciona regra para centralizar a imagem */
+    .image-container {
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+
+
+<div class="container text-center mt-3 image-container"> <!-- Adiciona a classe image-container aqui -->
+  <div class="row">
       <div class="col">
-        <img src="{{ animal.foto.url }}" class="img-fluid" alt="{{ animal.nome }}">
+          <a href="{% url 'animal_detail' animal_id=animal.id %}" class="square-crop">
+              <img src="{{ animal.foto.url }}" class="img-fluid" alt="{{ animal.nome }}">
+          </a>
       </div>
-    </div>
   </div>
-  
-  <div class="container text-center mt-5">
-    <div class="card-body">
+</div>
+
+<div class="container text-center mt-5 ficha-container">
+  <div class="card-body">
       <h5 class="card-title">Ficha do Amigo</h5>
       <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row" class="border-right pr-3">Nome</th>
-            <td>{{ animal.nome }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Espécie</th>
-            <td>{{ animal.especie }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Idade</th>
-            <td>{{ animal.idade }} Anos</td>
-          </tr>
-          <tr>
-            <th scope="row">Raça</th>
-            <td>{{ animal.raca }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Histórico de Saúde</th>
-            <td>{{ animal.historico_saude }}</td>
-          </tr>
-        </tbody>
+          <tbody>
+              <tr>
+                  <th scope="row" class="border-right pr-3">Nome</th>
+                  <td>{{ animal.nome }}</td>
+              </tr>
+              <tr>
+                  <th scope="row">Espécie</th>
+                  <td>{{ animal.especie }}</td>
+              </tr>
+              <tr>
+                  <th scope="row">Idade</th>
+                  <td>{{ animal.idade }} Anos</td>
+              </tr>
+              <tr>
+                  <th scope="row">Raça</th>
+                  <td>{{ animal.raca }}</td>
+              </tr>
+              <tr>
+                  <th scope="row">Histórico de Saúde</th>
+                  <td>{{ animal.historico_saude }}</td>
+              </tr>
+          </tbody>
       </table>
-    </div>
   </div>
+</div>
 
 {% endblock %}

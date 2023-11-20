@@ -13,32 +13,22 @@ def inicio(request):
 def quem_somos(request):
     return render(request, 'quem_somos.html')
 
-def futuras_atualizacoes(request):
-    return render(request, 'futuras_atualizacoes.html')
-
-def ficha(request):
-    return render(request, 'ficha.html')
-
 def animal_detail(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
     return render(request, 'animal_detail.html', {'animal': animal})
 
-def sua_view(request):
-    animal_2 = Animal.objects.get(id_ficha=2)
-    return render(request, 'inicio.html', {'animal_2': animal_2})
-
 def cadastro(request):
+    cadastro_success = False
     if request.method == 'POST':
         form = CadastroForm(request.POST)
         if form.is_valid():
             form.save()
-            # Redirecionar para a página de sucesso após o cadastro
-            return HttpResponse('Cadastro realizado com sucesso.')
+            cadastro_success = True
 
-    # Se o método não for POST ou o formulário não for válido, renderizar o formulário
     form = CadastroForm()
-    contexto = {'form': form}
+    contexto = {'form': form, 'cadastro_success': cadastro_success}
     return render(request, 'cadastro.html', contexto)
+
 
     
 def animal_search(request):

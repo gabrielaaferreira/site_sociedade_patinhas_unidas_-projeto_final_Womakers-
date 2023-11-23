@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-+=1b=ro9=led*#8ng(dcv^t&@p$9r4ek&1k!$mgtpo7#5ixnwu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gabiferreira.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'gabiferreira.pythonanywhere.com',
+    '127.0.0.1',
+    os.environ.get('DJANGO_ALLOWED_HOST', 'localhost'),
+]
 
 
 # Application definition
@@ -126,7 +130,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'static' / 'midia'
 
 STATIC_URL = '/static/'
 
